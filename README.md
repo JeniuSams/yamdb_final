@@ -1,4 +1,5 @@
-
+#
+![Build Status](https://github.com/JeniuSams/yamdb_final/workflows/yambd-workflow/badge.svg)
 
 # Описание проекта
 Проект YaMDb собирает отзывы пользователей на произведения. Произведения делятся на категории: «Книги», «Фильмы», «Музыка».
