@@ -75,7 +75,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
-        source: docker-compose.yaml, .env, nginx.conf
+        source: docker-compose.yaml, env, nginx.conf
         target: app_yamdb_final
 
     - name: executing remote ssh commands to deploy
@@ -86,6 +86,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
           cd app_yamdb_final
+          sudo mv env .env
           sudo docker-compose stop
           sudo cp static/* /var/lib/docker/volumes/yamdb_final_nginx_static/_data/
           sudo docker-compose up -d
