@@ -14,6 +14,8 @@ services:
   web:
     image: jeniusams/yamdb_final:latest
     restart: always
+    volumes:
+      - nginx_static:/code/static
     ports:
       - "8000:8000"
     depends_on:
