@@ -55,14 +55,9 @@ jobs:
         script: |
           cd app_yamdb_final
           tar -xvf deploy.tar
-          ls -l
-          #sudo pwd && ls -l
-          #sudo ls -l
-          #sudo cd app_yamdb_final && ls -l
-          #sudo mv env .env
-          #sudo docker-compose stop
-          #sudo docker-compose up -d
-
+          sudo mv env .env
+          sudo docker-compose stop
+          sudo docker-compose up -d
 
 
   send_message:
