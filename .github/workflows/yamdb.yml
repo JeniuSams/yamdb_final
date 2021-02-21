@@ -67,7 +67,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-          mkdir app_yamdb_final
+          rm -rf app_yamdb_final && mkdir app_yamdb_final
       
     - name: executing copy files
       uses: appleboy/scp-action@master
