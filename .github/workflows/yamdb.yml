@@ -50,11 +50,11 @@ jobs:
         script: |
           pwd
           ls -l
-          cd app_yamdb_final
-          sudo mv env .env
-          sudo docker-compose stop
-          sudo cp static/* /var/lib/docker/volumes/yamdb_final_nginx_static/_data/
-          sudo docker-compose up -d
+          cd app_yamdb_final && ls -l
+          mv env .env
+          docker-compose stop
+          cp static/* /var/lib/docker/volumes/yamdb_final_nginx_static/_data/
+          docker-compose up -d
 
 
 
