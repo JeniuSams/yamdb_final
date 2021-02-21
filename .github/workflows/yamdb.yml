@@ -23,7 +23,7 @@ jobs:
       run: flake8 .
 
     - name: Test with pytest
-      run: pytest tests.py
+      run: pytest
 
 
 
@@ -66,9 +66,13 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
-        source: "docker-compose.yaml"
-        target: "~/app/"
-        script: sudo docker-compose.yaml up
+        source: docker-compose.yaml, .env, nginx.conf, static
+        target: app_yamdb_final
+        script: |
+          cd app_yamdb_final
+          sudo docker-compose stop
+          sudo cp static/* /var/lib/docker/volumes/yamdb_final_nginx_static/_data/
+          sudo docker-compose up -d
 
 
 
