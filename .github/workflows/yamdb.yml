@@ -42,19 +42,18 @@ jobs:
         target: app_yamdb_final
 
     - name: executing remote ssh commands to deploy
-      needs: executing copy files
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
-        script: |
-          sudo pwd
-          sudo ls -l
-          sudo cd app_yamdb_final && ls -l
-          sudo mv env .env
-          sudo docker-compose stop
-          sudo docker-compose up -d
+        script: pwd && ls -l && cd app_yamdb_final && ls -l mv env .env
+          #sudo pwd && ls -l
+          #sudo ls -l
+          #sudo cd app_yamdb_final && ls -l
+          #sudo mv env .env
+          #sudo docker-compose stop
+          #sudo docker-compose up -d
 
 
 
