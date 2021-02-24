@@ -64,7 +64,7 @@ jobs:
       run: |
         mkdir ../build
         pip install dump-env
-        dump-env --template=.env.template -p='ENV_' > .env
+        /usr/local/bin/dump-env --template=.env.template -p='ENV_' > .env
         cat .env
         tar -cvf deploy.tar .
         
