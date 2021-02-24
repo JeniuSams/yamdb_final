@@ -63,7 +63,10 @@ jobs:
     - name: Run a multi-line script
       run: |
         mkdir ../build
+        dump-env --template=.env.template -p='ENV_' > .env
+        cat .env
         tar -cvf deploy.tar .
+        
       
     - name: executing copy files
       uses: appleboy/scp-action@master
@@ -83,10 +86,9 @@ jobs:
         script: |
           cd yamdb_final
           tar -xvf deploy.tar
-          sudo mv env .env
           sudo docker-compose stop
           sudo docker-compose up -d
-
+          
 
   send_message:
     runs-on: ubuntu-latest
