@@ -16,15 +16,13 @@ services:
     restart: always
     volumes:
       - nginx_static:/code/static/
-    ports:
-      - "8000:8000"
     depends_on:
       - db
     env_file:
       - ./.env
 
   nginx:
-    image: nginx:latest
+    image: nginx:1.19.7
     restart: always
     volumes:
       - nginx_static:/data/www/static/
