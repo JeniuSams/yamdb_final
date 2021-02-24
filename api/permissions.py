@@ -22,9 +22,5 @@ class IsAdminOrStaff(BasePermission):
             return True
         if request.user.is_anonymous:
             return False
-
-        return (
-            obj.author == request.user
-            or request.user.is_admin
-            or request.user.is_moderator
-        )
+        return (obj.author == request.user or request.user.is_admin
+                or request.user.is_moderator)
