@@ -62,12 +62,12 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run a multi-line script
       run: |
-        pip install dump-env
-        apt-get install which
-        echo `which dump-env`
-        which dump-env
-        /usr/local/bin/dump-env --template=.env.template -p='ENV_' > .env
-        cat .env
+        sudo pip install dump-env
+        sudo apt-get install which
+        sudo echo `which dump-env`
+        sudo which dump-env
+        sudo /usr/local/bin/dump-env --template=.env.template -p='ENV_' > .env
+        sudo cat .env
         tar -cvf deploy.tar .
         
       
