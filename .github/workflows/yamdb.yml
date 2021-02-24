@@ -62,11 +62,10 @@ jobs:
     - uses: actions/checkout@v2
     - uses: secrethub/actions/env-export@v0.2.1
       env:
-       SECRETHUB_CREDENTIAL: ${{ secrets.SECRETHUB_CREDENTIAL }}
+       SECRETHUB_CREDENTIAL: ${{ secrets }}
     - name: Print environment with masked secrets
       run: |
         sudo printenv
-        sudo exports
     
     - name: Run a multi-line script
       run: |
