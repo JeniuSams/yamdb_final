@@ -45,12 +45,16 @@ docker-compose up --build -d
 ```
 infra_sp2_web_1: docker-exec -it infra_sp2_web_1 bash
 ```
-#### 8. Создание и применение миграций базы данных
+#### 8. Создание и применение миграций базы данных и сбор статики
 приглашение root@f04d1d6ad63c:/code# показывает, что это оболочка контейнера, теперь можно выполнить миграции:
 ```
 root@f04d1d6ad63c:/code# python manage.py makemigrations
 root@f04d1d6ad63c:/code# python manage.py migrate
+root@f04d1d6ad63c:/code# python manage.py collectstatic --noinput
 ```
+
+Миграции баз данных и сбор статики можно так же выполнить запустив скрипт ./migrations.sh
+
 #### 9. Создание суперпользователя
 ```
 root@f04d1d6ad63c:/code# python manage.py createsuperuser
