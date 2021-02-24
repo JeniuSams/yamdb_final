@@ -12,7 +12,7 @@ services:
       - ./.env
 
   web:
-    image: 4dragunov/yamdb_final:latest
+    image: jeniusams/yamdb_final:latest
     restart: always
     volumes:
       - nginx_static:/code/static/
