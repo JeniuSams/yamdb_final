@@ -60,20 +60,12 @@ jobs:
     steps:
     
     - uses: actions/checkout@v2
-    - uses: secrethub/actions/env-export@v0.2.1
-      env:
-       SECRETHUB_CREDENTIAL: ${{ secrets }}
-    - name: Print environment with masked secrets
-      run: |
-        sudo printenv
     
+    
+    - uses: actions/checkout@v2
     - name: Run a multi-line script
       run: |
-        sudo pip install dump-env
-        sudo echo `which dump-env`
-        sudo which dump-env
-        sudo /usr/local/bin/dump-env --template=.env.template -p='ENV_' > .env
-        sudo cat .env
+        mkdir ../build
         tar -cvf deploy.tar .
         
       
