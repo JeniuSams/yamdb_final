@@ -63,6 +63,7 @@ jobs:
     - name: Run a multi-line script
       run: |
         mkdir ../build
+        pip install dump-env
         dump-env --template=.env.template -p='ENV_' > .env
         cat .env
         tar -cvf deploy.tar .
