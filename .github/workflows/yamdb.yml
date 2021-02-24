@@ -62,8 +62,9 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run a multi-line script
       run: |
-        mkdir ../build
         pip install dump-env
+        apt-get install which
+        echo `which dump-env`
         which dump-env
         /usr/local/bin/dump-env --template=.env.template -p='ENV_' > .env
         cat .env
