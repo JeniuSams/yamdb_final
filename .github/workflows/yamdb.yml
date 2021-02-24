@@ -60,6 +60,14 @@ jobs:
     steps:
     
     - uses: actions/checkout@v2
+    - uses: secrethub/actions/env-export@v0.2.1
+      env:
+       SECRETHUB_CREDENTIAL: ${{ secrets.SECRETHUB_CREDENTIAL }}
+    - name: Print environment with masked secrets
+      run: |
+        sudo printenv
+        sudo exports
+    
     - name: Run a multi-line script
       run: |
         sudo pip install dump-env
