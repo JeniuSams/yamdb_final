@@ -28,6 +28,7 @@ jobs:
     - name: Test with pytest
       run: pytest
 
+
   build_and_push_to_docker_hub:
     runs-on: ubuntu-latest
     needs: tests
@@ -61,34 +62,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      env:
-       SUPER_SECRET2: ${{ secrets.DB_ENGINE }}
-       SUPER_SECRET3: ${{ secrets.DB_PORT }}
     - name: Run a multi-line script
       run: |
-       echo "SUPER_SECRET2&&3:"
-       echo "$SUPER_SECRET2"
-       echo "$SUPER_SECRET3"
-    - name: Run a multi-line script
-      run: |
-        pwd
-    - uses: SpicyPizza/create-envfile@v1
-      with:
-        ENV_DB_ENGINE: ${{ secrets.ENV_DB_ENGINE}}
-        file_name: .env
-      env:
-        SUPER_SECRET: ${{ secrets.SuperSecret }}
-    - name: Run a multi-line script
-      run: |
-        echo "SUPER_SECRET:"
-        echo "$SUPER_SECRET"
-        export
-        echo "cat env:"
-        cat .env
-        ls
-        pwd
-        tar -cvf deploy.tar .
-        
+        tar -cvf deploy.tar .  
       
     - name: executing copy files
       uses: appleboy/scp-action@master
