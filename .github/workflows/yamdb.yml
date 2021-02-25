@@ -57,10 +57,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push_to_docker_hub
+
     steps:
-    - uses: actions/checkout@v2  
+    - uses: actions/checkout@v2
+    - uses: secrethub/actions/env-export@v0.2.1
+      env:
+        pizza_secrets: ${{ secrets.pizza }}
+    - name: Print environment with masked secrets
+      run: printenv
+        
     - name: Run a multi-line script
       run: |
+        export
         tar -cvf deploy.tar .
         
       
