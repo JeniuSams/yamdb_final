@@ -67,8 +67,13 @@ jobs:
       with:
         ENV_DB_ENGINE: ${{ secrets.ENV_DB_ENGINE}}
         file_name: .env
+    - shell: bash
+      env:
+        SUPER_SECRET: ${{ secrets.SuperSecret }}
     - name: Run a multi-line script
       run: |
+        echo "SUPER_SECRET:"
+        echo "$SUPER_SECRET"
         export
         echo "cat env:"
         cat .env
