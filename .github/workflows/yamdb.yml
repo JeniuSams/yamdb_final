@@ -68,10 +68,18 @@ jobs:
         ENV_DB_PORT: ${{ secrets.DB_PORT }}
     - name: Print environment with masked secrets
       run: printenv
-        
+    - uses: SpicyPizza/create-envfile@v1
+      with:
+        envkey_DEBUG: false
+        envkey_SOME_API_KEY: "123456abcdef"
+        envkey_ENV_DB_ENGINE: ${{ secrets.ENV_DB_ENGINE}}
+        file_name: .env
     - name: Run a multi-line script
       run: |
         export
+        cat .env
+        ls
+        pwd
         tar -cvf deploy.tar .
         
       
