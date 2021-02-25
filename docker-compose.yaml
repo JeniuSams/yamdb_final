@@ -16,8 +16,6 @@ services:
     restart: always
     volumes:
       - yamdb_static:/code/static/
-    expose:
-      - 8000
     depends_on:
       - db
     env_file:
@@ -29,5 +27,7 @@ services:
     volumes:
       - yamdb_static:/data/www/static/
       - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
     depends_on:
       - web
