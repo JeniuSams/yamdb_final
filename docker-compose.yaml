@@ -16,6 +16,8 @@ services:
     restart: always
     volumes:
       - yamdb_static:/code/static/
+    expose:
+      - 8000
     depends_on:
       - db
     env_file:
