@@ -60,23 +60,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: secrethub/actions/env-export@v0.2.1
-      env:
-        ENV_DB_ENGINE: ${{ secrets.DB_ENGINE }}
-        ENV_DB_HOST: ${{ secrets.DB_HOST }}
-        ENV_DB_NAME: ${{ secrets.DB_NAME }}
-        ENV_DB_PORT: ${{ secrets.DB_PORT }}
-    - name: Print environment with masked secrets
-      run: printenv
+    - name: Run a multi-line script
+      run: |
+        pwd
     - uses: SpicyPizza/create-envfile@v1
       with:
-        envkey_DEBUG: false
-        envkey_SOME_API_KEY: "123456abcdef"
-        envkey_ENV_DB_ENGINE: ${{ secrets.ENV_DB_ENGINE}}
+        ENV_DB_ENGINE: ${{ secrets.ENV_DB_ENGINE}}
         file_name: .env
     - name: Run a multi-line script
       run: |
         export
+        echo "cat env:"
         cat .env
         ls
         pwd
