@@ -60,6 +60,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      env:
+       SUPER_SECRET2: ${{ secrets.SuperSecret }}
+    - name: Run a multi-line script
+      run: |
+       echo "SUPER_SECRET2:"
+       echo "$SUPER_SECRET2"
     - name: Run a multi-line script
       run: |
         pwd
@@ -67,7 +73,6 @@ jobs:
       with:
         ENV_DB_ENGINE: ${{ secrets.ENV_DB_ENGINE}}
         file_name: .env
-    - shell: bash
       env:
         SUPER_SECRET: ${{ secrets.SuperSecret }}
     - name: Run a multi-line script
