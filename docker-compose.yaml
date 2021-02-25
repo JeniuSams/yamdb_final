@@ -1,7 +1,7 @@
 version: '3.8'
 volumes:
   postgres_data:
-  nginx_static:
+  yamdb_static:
 
 services:
   db:
@@ -15,7 +15,7 @@ services:
     image: jeniusams/yamdb_final:latest
     restart: always
     volumes:
-      - nginx_static:/code/static/
+      - yamdb_static:/code/static/
     depends_on:
       - db
     env_file:
@@ -25,9 +25,7 @@ services:
     image: nginx:1.19.7
     restart: always
     volumes:
-      - nginx_static:/data/www/static/
+      - yamdb_static:/data/www/static/
       - ./nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - "80:80"
     depends_on:
       - web
